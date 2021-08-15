@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const petData = require('./db/db.json');
 
-const PORT = "https://note-taker-nl92.herokuapp.com";
+const PORT = "https://note-taker-nl92.herokuapp.com/";
 
 const app = express();
 
