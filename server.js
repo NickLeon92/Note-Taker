@@ -15,6 +15,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname,'notes.html'))
+})
+
 app.listen(PORT, () => {
   console.log(`Example app listening`);
 });
