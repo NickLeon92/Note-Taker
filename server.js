@@ -1,8 +1,7 @@
 const express = require('express');
-const path = require('path');
-const petData = require('./db/db.json');
+const noteData = require('./db/db.json');
 
-const PORT = "https://note-taker-nl92.herokuapp.com/";
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -17,5 +16,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Example app listening at https://note-taker-nl92.herokuapp.com/`);
+  console.log(`Example app listening`);
 });
