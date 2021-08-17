@@ -79,12 +79,20 @@ app.post('/api/notes', (req, res) => {
   }
 });
 
-
-
-
-
-
-
+app.delete('api/notes/:id', (req, res) => {
+    console.info(`${req.method} request received to delete a note`);
+    const requestedId = req.params.id
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+      if (err) {
+        console.error(err);
+      } else {
+        const parsedData = JSON.parse(data);
+        parsedData.filter(value => value.id != requestedId);
+        writeToFile('./db/db.json', parsedData);
+      }
+    });
+    
+})
 
 
 app.listen(PORT, () => {
