@@ -90,6 +90,7 @@ app.delete('/api/notes/:id', (req, res) => {
         const parsedData = JSON.parse(data);
         console.info(parsedData)
         const newData = parsedData.filter(value => value.id.toString() !== requestedId.toString())
+        res.json(newData)
 
         writeToFile('./db/db.json', newData);
         
