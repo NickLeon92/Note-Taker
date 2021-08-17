@@ -79,16 +79,20 @@ app.post('/api/notes', (req, res) => {
   }
 });
 
-app.delete('api/notes/:id', (req, res) => {
+app.delete('/api/notes/:id', (req, res) => {
     console.info(`${req.method} request received to delete a note`);
     const requestedId = req.params.id
+    console.info(requestedId)
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
       if (err) {
         console.error(err);
       } else {
         const parsedData = JSON.parse(data);
-        parsedData.filter(value => value.id != requestedId);
-        writeToFile('./db/db.json', parsedData);
+        console.info(parsedData)
+        const newData = parsedData.filter(value => value.id.toString() !== requestedId.toString())
+
+        writeToFile('./db/db.json', newData);
+        
       }
     });
     
